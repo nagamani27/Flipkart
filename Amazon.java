@@ -4,13 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 
-public class Flipkart2 {
+public class Amazon {
 
 	public static void main(String[] args) throws InterruptedException 
 	{
-		 select("Electronics","Mobiles");
+		 select("Echo & Alexa","Echo Dot");
 	}
 		    public static void select(String Header,String SubHeader) throws InterruptedException
 		    {
@@ -20,8 +19,10 @@ public class Flipkart2 {
 		    	System.setProperty("webdriver.chrome.driver","C:\\Users\\RC\\eclipse-workspace\\Sai5\\driver\\chromedriver.exe");
 		    	
 		    	WebDriver driver=new ChromeDriver();
-		    	driver.navigate().to("https://www.flipkart.com/");
-		    	List<WebElement> ParentElement= driver.findElements(By.xpath("//div[@class='_3Ed3Ub']/ul/li/a"));
+		    	driver.navigate().to("https://www.amazon.in/");
+		    	driver.findElement(By.xpath("//div[@id='nav-shop']")).click();
+		    	
+		    	List<WebElement> ParentElement= driver.findElements(By.xpath("//table[@id='shopAllLinks']//td//h2"));
 		    	System.out.println(ParentElement.size());
 		    
 		    	for(int i=0;i<ParentElement.size();i++)
@@ -37,8 +38,8 @@ public class Flipkart2 {
 		    	ParentElement.get(requiredLine).click();
 		    	
 		    	
-		    	List <WebElement> HeadElement=driver.findElements(By.xpath("//ul[@class='_3GtRpC']/li/ul"));
-		        List<WebElement> SubElement=HeadElement.get(requiredLine).findElements(By.tagName("span"));
+		    	List <WebElement> HeadElement=driver.findElements(By.xpath("//table[@id='shopAllLinks']//tbody//tr//td//div//ul//li"));
+		        List<WebElement> SubElement=HeadElement.get(requiredLine).findElements(By.tagName("a"));
 		        for(int i=0;i<SubElement.size();i++)
 		        {
 		        	if(SubElement.get(i).getText().equals(SubHeader))
@@ -50,12 +51,8 @@ public class Flipkart2 {
 		        }
 		    	
 		        SubElement.get(requiredIndex).click();
-		    	
-		    	
-		    	
-		    	
-		    	
+		   	
 		    	
 		    }
-		    
-}	    
+		
+}
