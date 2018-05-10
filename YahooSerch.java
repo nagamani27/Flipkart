@@ -29,7 +29,7 @@ System.setProperty("webdriver.chrome.driver","C:\\Users\\RC\\eclipse-workspace\\
     	}
 		else if(PageNumber.equals("3"))
 		{
-			String NewLocator=Locator.replaceAll("#-#","11-20");
+			String NewLocator=Locator.replaceAll("#-#","21-30");
 		}*/
     	switch(PageNumber) {
         case 1:
